@@ -28,6 +28,7 @@ export interface Entity {
   description?: string;
   imageUrl?: string;
   notes?: string;
+  position?: { x: number; y: number };
   // Additional properties can be added here
 }
 

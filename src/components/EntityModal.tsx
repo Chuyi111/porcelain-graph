@@ -11,13 +11,14 @@ interface EntityModalProps {
   isOpen: boolean;
   onClose: () => void;
   onUpdate: () => void;
+  onDelete: (id: string) => void;
 }
 
 const entityTypes: EntityType[] = [
   'Porcelain', 'Technique', 'Material', 'Shape', 'Glaze', 'Pattern', 'Kiln', 'Period', 'Source', 'Image'
 ];
 
-const EntityModal: React.FC<EntityModalProps> = ({ entity, isOpen, onClose, onUpdate }) => {
+const EntityModal: React.FC<EntityModalProps> = ({ entity, isOpen, onClose, onUpdate, onDelete }) => {
   const [formData, setFormData] = useState<Partial<Entity>>({});
 
   useEffect(() => {
@@ -83,6 +84,7 @@ const EntityModal: React.FC<EntityModalProps> = ({ entity, isOpen, onClose, onUp
             />
           </div>
           <div className="flex justify-end gap-2">
+            <button type="button" onClick={() => onDelete(entity.id)} className="px-4 py-2 bg-red-500 text-white rounded">Delete</button>
             <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-300 rounded">Cancel</button>
             <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">Save</button>
           </div>
